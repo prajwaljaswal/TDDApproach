@@ -9,7 +9,15 @@ export function add(numbers: string): number {
   // Check for custom delimiter
   if (numbers.startsWith('//')) {
     const delimiterEndIndex = numbers.indexOf('\n');
-    delimiter = numbers.substring(2, delimiterEndIndex);
+    const delimiterSpec = numbers.substring(2, delimiterEndIndex);
+
+    // Check if it's bracketed format like //[***]
+    if (delimiterSpec.startsWith('[') && delimiterSpec.endsWith(']')) {
+      delimiter = delimiterSpec.slice(1, -1);
+    } else {
+      delimiter = delimiterSpec;
+    }
+
     numbersPart = numbers.substring(delimiterEndIndex + 1);
   }
 
