@@ -1,3 +1,7 @@
+import { add } from './stringCalculator';
+
 describe('String Calculator', () => {
-  // TDD Step 1: Setup basic test structure
+  test('should return 0 for empty string', () => {
+    expect(add('')).toBe(0);
+  });
 });
