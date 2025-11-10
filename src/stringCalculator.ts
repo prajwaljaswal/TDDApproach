@@ -31,5 +31,8 @@ export function add(numbers: string): number {
     throw new Error(`negative numbers not allowed: ${negativeNumbers.join(',')}`);
   }
 
-  return nums.reduce((sum, num) => sum + num, 0);
+  // Filter out numbers greater than 1000
+  const validNumbers = nums.filter(num => num <= 1000);
+
+  return validNumbers.reduce((sum, num) => sum + num, 0);
 }
